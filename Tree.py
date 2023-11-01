@@ -135,11 +135,11 @@ class Tree:
         
     def __str__(self):
         return f"""
-Arbol binario de busqueda
-    root: {self.get_root()}
-    size: {self.get_size()}
-    height: {self.get_height()}
-    nodos: {self.traverse()}
+Arbol binario de busqueda:
+|   root: {self.get_root()}
+|   size: {self.get_size()}
+|   height: {self.get_height()}
+|   nodos: {self.traverse()}
                 """
         
         
