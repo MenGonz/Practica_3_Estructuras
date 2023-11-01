@@ -84,7 +84,7 @@ class Tree:
     
     
     
-    def traverse(self, orden:str ="in") -> tuple[str]:
+    def traverse(self, orden: str = "in") -> tuple[str]:
         """
         Retorna tupla con recorrido del árbol en el orden ord especificado.
         
