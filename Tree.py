@@ -17,7 +17,8 @@ class Tree:
             self.height = 0
             self.size = 0
         
-        
+    
+    #Métodos básicos    
     def get_height(self): return self.height
     
     def get_root(self): return self.root
@@ -26,6 +27,9 @@ class Tree:
     
     def is_empty(self): return not bool(self.get_root())
     
+    
+    
+    #Métodos varios
     def insert(self, data):
         """
         Inserta una data en el árbol respetando la estructura.
@@ -132,7 +136,8 @@ class Tree:
         
         return tuple(recorrido)
         
-        
+    
+    #Métodos dunder
     def __str__(self):
         return f"""
 Arbol binario de busqueda:
