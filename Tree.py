@@ -142,6 +142,8 @@ Arbol binario de busqueda:
 |   nodos: {self.traverse()}
                 """
         
+    def __repr__(self):
+        return f"{self.traverse()}"
         
     
 if __name__ == "__main__":
