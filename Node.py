@@ -3,7 +3,8 @@
 class Node:
     
     
-    def __init__(self, data):
+    def __init__(self, key:int,data ):
+        self.key: int = key
         self.data = data
         self.r: Node | None = None
         self.l: Node | None = None
@@ -11,32 +12,32 @@ class Node:
         
     
     #Méodos privados de la clase
-    def __insert_r(self, data):
+    def __insert_r(self, key, data):
         if not self.has_right():
-            n: Node = Node(data) 
+            n: Node = Node(key, data) 
             self.r = n
             n.p = self
         else:
-            self.r.insert(data)
+            self.r.insert(key, data)
             
-    def __insert_l(self, data):
+    def __insert_l(self, key, data):
         if not self.has_left():
-            n: Node = Node(data) 
+            n: Node = Node(key, data) 
             self.l = n
             n.p = self
         else:
-            self.l.insert(data)
+            self.l.insert(key, data)
     
     
     #métodos varios
-    def insert(self, data):
+    def insert(self, key, data):
         """
         Le inserta un hijo al subárbol apropiado debajo de el nodo.
         """
-        if self.data > data:
-            self.__insert_l(data)
+        if self.key > key:
+            self.__insert_l(key, data)
         else:
-            self.__insert_r(data)
+            self.__insert_r(key, data)
                
     def has_left(self) -> bool: return bool(self.get_left())
     
@@ -87,6 +88,9 @@ class Node:
         else:
             return 1 + self.p.depth()
         
+    def get_key(self): return self.key
+    def set_key(self, key): self.key = key
+    
     def get_data(self): return self.data
     def set_data(self, data): self.data = data
     
@@ -102,7 +106,7 @@ class Node:
     
     #Métodos dunder
     def __str__(self):
-        return str(self.get_data())
+        return str(self.get_key())
     
     def __repr__(self):
         return f"""({self.get_left()} <- {self} -> {self.get_right()})"""

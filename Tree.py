@@ -7,9 +7,9 @@ class Tree:
     height: int
     size: int
     
-    def __init__(self, data= None):
-        if data:
-            self.root = Node(data)
+    def __init__(self, key: int = None, data= None):
+        if key and data:
+            self.root = Node(key, data)
             self.height = 1
             self.size = 1
         else:
@@ -30,29 +30,29 @@ class Tree:
     
     
     #Métodos varios
-    def insert(self, data):
+    def insert(self, key: int, data):
         """
-        Inserta una data en el árbol respetando la estructura.
+        Inserta una key en el árbol respetando la estructura.
         """
         if self.is_empty():
-            self.root = Node(data)
+            self.root = Node(key, data)
         else:
-            self.get_root().insert(data)
+            self.get_root().insert(key, data)
         
         self.height = self.root.get_height()
         self.size += 1
         
         
-    def search(self, data) -> Node:
+    def search_key(self, key) -> Node:
         """
-        Busca un dato en el árbol y retorna (si existe) el nodo que lo contiene.
+        Busca un key en el árbol y retorna (si existe) el nodo que lo contiene.
         """
         temp: Node = self.get_root()
         
         while temp:
-            if temp.get_data() == data:
+            if temp.get_key() == key:
                 return temp
-            elif temp.get_data() > data:
+            elif temp.get_key() > key:
                 temp = temp.get_left()
             else:
                 temp = temp.get_right()
@@ -60,11 +60,11 @@ class Tree:
         return None
     
     
-    def remove(self, data):
+    def remove_key(self, key):
         """
         Recibe un dato y remueve del árbol el nodo al que le corresponde.
         """
-        nodo: Node = self.search(data)
+        nodo: Node = self.search_key(key)
         
         if nodo:
             if nodo.is_leaf() and not nodo.is_root():
@@ -76,12 +76,12 @@ class Tree:
                     nodo.p = None
             elif nodo.has_left():
                 temp: Node = nodo.rightmost_node_of_left_subtree()
-                nodo.data, temp.data = temp.data, nodo.data
-                self.remove(temp)
+                nodo.key, temp.key = temp.key, nodo.key
+                self.remove_key(temp)
             elif nodo.has_right():
                 temp: Node = nodo.leftmost_node_of_right_subtree()
-                nodo.data, temp.data = temp.data, nodo.data
-                self.remove(temp)
+                nodo.key, temp.key = temp.key, nodo.key
+                self.remove_key(temp)
         
             self.size -= 1
             self.height = self.get_root().get_height()
@@ -98,7 +98,7 @@ class Tree:
         root: Node = self.get_root()
         recorrido: list[str] = []
         
-        def visit(node: Node): recorrido.append(node.get_data())
+        def visit(node: Node): recorrido.append(node.get_key())
         
         #funciones recursivas para recorrer el árbol
         def preorder(nodo: Node):
