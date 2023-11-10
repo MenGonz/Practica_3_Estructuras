@@ -154,11 +154,11 @@ Arbol binario de busqueda:
 if __name__ == "__main__":
     T: Tree = Tree()
     
-    T.insert(2)
-    T.insert(1)
-    T.insert(3)
-    T.insert(4)
-    T.insert(0)
+    T.insert(2,0)
+    T.insert(1,0)
+    T.insert(3,0)
+    T.insert(4,0)
+    T.insert(0,0)
     
     
     print(T)
