@@ -6,6 +6,7 @@ class Tree:
     root: Node
     height: int
     size: int
+    PRINT_INDT = 1
     
     def __init__(self, key: int = None, data= None):
         if key and data:
@@ -136,17 +137,24 @@ class Tree:
         
         return tuple(recorrido)
         
+        
+    def mostrar_arbol(self, nodo: Node, header = "", last = True):
+        elbow = "└──"
+        pipe = "│  "
+        tee = "├──"
+        blank = "   "
+        print(header + (elbow if last else tee), nodo.get_data())
+        if nodo.has_left() and nodo.get_left().get_data() != None:
+            self.mostrar_arbol(nodo.get_left(), header = header + (blank if last else pipe), last = False)
+        if nodo.has_right() and nodo.get_right().get_data() != None:
+            self.mostrar_arbol(nodo.get_right(), header = header + (blank if last else pipe), last = True)
+        
     
     #Métodos dunder
     def __str__(self):
-        return f"""
-Arbol binario de busqueda:
-|   root: {self.get_root()}
-|   size: {self.get_size()}
-|   height: {self.get_height()}
-|   nodos: {self.traverse()}
-                """
-        
+        self.mostrar_arbol(self.get_root())
+    
+    
     def __repr__(self):
         return f"{self.traverse()}"
         

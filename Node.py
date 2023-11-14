@@ -106,9 +106,9 @@ class Node:
     
     #Métodos dunder
     def __str__(self):
-        return str(self.get_key())
+        return str(self.get_data())
     
-    def __repr__(self):
-        return f"""({self.get_left()} <- {self} -> {self.get_right()})"""
+    #def __repr__(self):
+    #    return f"""({self.get_left()} <- {self} -> {self.get_right()})"""
     
     

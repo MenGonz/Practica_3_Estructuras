@@ -14,7 +14,7 @@ if __name__ == "__main__":
     
     for u in usuarios:
         T.insert(u.get_key(), u)
-        
     
     #print(T)
     print(T.traverse("in"))
+    print(T)
