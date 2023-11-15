@@ -13,8 +13,11 @@ if __name__ == "__main__":
                 User("Mateo",10110005)]
     
     for u in usuarios:
-        T.insert(u.get_key(), u)
+        T.insert_user(u)
     
-    #print(T)
-    print(T.traverse("in"))
+
+    T.insert_user(User("Leo",10001012))
+    T.insert_user(User("Andres",10111107))
+    
+    
     print(T)

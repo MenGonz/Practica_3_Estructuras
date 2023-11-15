@@ -14,9 +14,10 @@ class User():
         return self.nombre
     
     def get_key(self) -> int:
-        return sum(list(map(int,list(str(self.identificacion)))))
+        return sum(list(map(int,list(str(self.get_id())))))
     
     def __str__(self):
-        return f"({self.get_nombre()}, {self.get_id()})"
+        return f"({self.get_nombre()}, {sum(list(map(int,list(str(self.get_id())))))})"
     
-    
+    def __repr__(self):
+        return f"<{self.get_nombre()} | {self.get_key()} | {self.get_id()}>"

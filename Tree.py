@@ -1,4 +1,5 @@
 from Node import Node
+from User import User
 
 
 class Tree:
@@ -6,7 +7,7 @@ class Tree:
     root: Node
     height: int
     size: int
-    PRINT_INDT = 1
+    
     
     def __init__(self, key: int = None, data= None):
         if key and data:
@@ -31,6 +32,18 @@ class Tree:
     
     
     #Métodos varios
+    def insert_user(self, user: User):
+        """
+        Inserta un usuario en el árbol respetando la estructura.
+        """
+        if self.is_empty():
+            self.root = Node(user.get_key(), user)
+        else:
+            self.get_root().insert(user.get_key(), user)
+        
+        self.height = self.root.get_height()
+        self.size += 1
+    
     def insert(self, key: int, data):
         """
         Inserta una key en el árbol respetando la estructura.
@@ -78,11 +91,15 @@ class Tree:
             elif nodo.has_left():
                 temp: Node = nodo.rightmost_node_of_left_subtree()
                 nodo.key, temp.key = temp.key, nodo.key
-                self.remove_key(temp)
+                nodo.data, temp.data = temp.data, nodo.data
+                temp.p.l = None
+                temp.p = None
             elif nodo.has_right():
                 temp: Node = nodo.leftmost_node_of_right_subtree()
                 nodo.key, temp.key = temp.key, nodo.key
-                self.remove_key(temp)
+                nodo.data, temp.data = temp.data, nodo.data
+                temp.p.r = None
+                temp.p = None
         
             self.size -= 1
             self.height = self.get_root().get_height()
@@ -163,12 +180,16 @@ class Tree:
 if __name__ == "__main__":
     T: Tree = Tree()
     
-    T.insert(2,"uno")
-    T.insert(1,"dos")
-    T.insert(3,"tres")
-    T.insert(4,"cuatro")
-    T.insert(0,"cinco")
+    T.insert(10,"diez")
+    T.insert(5,"cinco")
+    T.insert(15,"quince")
+    T.insert(2,"dos")
+    T.insert(7,"siete")
+    T.insert(12,"doce")
+    T.insert(17,"diecisiete")
+    T.insert(11,"once")
+    T.insert(13,"trece")
+    T.remove_key(15)
     
-
     print(T)
     
