@@ -162,12 +162,12 @@ class Tree:
 if __name__ == "__main__":
     T: Tree = Tree()
     
-    T.insert(2,0)
-    T.insert(1,0)
-    T.insert(3,0)
-    T.insert(4,0)
-    T.insert(0,0)
+    T.insert(2,"uno")
+    T.insert(1,"dos")
+    T.insert(3,"tres")
+    T.insert(4,"cuatro")
+    T.insert(0,"cinco")
     
-    
+
     print(T)
     
