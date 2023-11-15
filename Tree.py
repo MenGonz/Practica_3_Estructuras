@@ -153,6 +153,7 @@ class Tree:
     #Métodos dunder
     def __str__(self):
         self.mostrar_arbol(self.get_root())
+        return "Finalizado"
     
     
     def __repr__(self):
